@@ -1,17 +1,101 @@
-#home-nav{
-    color:black;
-    font-size: 2vw;
-    
+/* Basic reset for better cross-browser compatibility */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-#history-nav{
-    color:black;
-    font-size: 2vw;
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
 }
 
+/* Navigation styles */
+.nav {
+    background-color: rgb(233, 150, 122);
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
 
-#title{
+.nav-link {
+    color: white;
+    text-decoration: none;
+}
 
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Title style */
+#title {
     text-align: center;
+    margin-bottom: 20px;
 }
 
+/* Container styles */
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping to the next line if needed */
+    justify-content: space-around; /* Centers the items horizontally */
+    gap: 20px; /* Space between the cards */
+}
+
+/* Card styles */
+.card {
+    background-color: white;
+    border: 3px solid #ccc; /* Adjust the border size here */
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(25% - 40px); /* Responsive flex sizing */
+    max-width: calc(25% - 40px); /* Prevent the cards from getting too wide */
+}
+
+.card-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.card-title {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-align: center;
+
+}
+
+.card-text {
+    margin-bottom: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+#temp{
+    border:3px solid black;
+}
+
+#turbidity{
+    border:3px solid black;
+}
+
+#ph{
+    border:3px solid black;
+}
