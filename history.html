@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqua Guard - History</title>
+    <link rel="stylesheet" href="history.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+    <nav class="nav">
+        <a id="home-nav" class="nav-link" href="index.html"><strong style="font-size: 30px;">Home</strong></a>
+        <a id="history-nav" class="nav-link" aria-current="page" href="history.html"><strong style="font-size: 30px;">History</strong></a>
+    </nav>
+    <div>
+        <h1 id="title" style="font-size: 50px;">AQUA GUARD</h1>
+    </div>
+    <div class="container">
+        <div class="form-container">
+            <form id="filter-form">
+                <label for="range"><h1>Time Range:</h1></label>
+                <select id="range" name="range">
+                    <option value="hour">hour</option>
+                    <option value="week">week</option>
+                    <option value="month">month</option>
+                </select><br>
+                <label for="parameter"><h1>Parameter:</h1></label>
+                <select id="parameter" name="parameter">
+                    <option value="Temperature">Temperature</option>
+                    <option value="turbidity">turbidity</option>
+                    <option value="PH">PH</option>
+                </select><br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    
+        <figure class="highcharts-figure">
+            <div id="container">
+
+            </div>
+        </figure>
+    </div>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="history.js"></script>
+   
+</body>
+</html>
