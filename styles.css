@@ -102,10 +102,10 @@ body {
 }
 
 .highcharts-figure .chart-container {
-    width: 480px;
+    width: 450px;
     height: 250px;
     justify-content: center;
-    background-color:rgb(255,160,122) ;
+    
     
 }
 
@@ -170,3 +170,28 @@ body {
     }
 }
 
+.status-box {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    border: 2px bold black;
+}
+
+.status-box.normal {
+    background-color: green;
+    color: white;
+}
+
+.status-box.abnormal {
+    background-color: red;
+    color: white;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
