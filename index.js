@@ -63,7 +63,7 @@ const chartTemp = Highcharts.chart(
     'container-temperature', Highcharts.merge(gaugeOptions, {
         yAxis: {
             min: 0,
-            max: 100,
+            max: 50,
         },
 
         credits: {
@@ -72,7 +72,7 @@ const chartTemp = Highcharts.chart(
 
         series: [{
             name: 'Temperature',
-            data: [40],
+            data: [25],
             dataLabels: {
                 format:
                 '<div style="text-align:center">' +
@@ -92,7 +92,7 @@ const chartTurbidity = Highcharts.chart(
     'container-turbidity', Highcharts.merge(gaugeOptions, {
         yAxis: {
             min: 0,
-            max: 1000,
+            max: 1,
         },
         
         credits: {
@@ -100,7 +100,7 @@ const chartTurbidity = Highcharts.chart(
         },
         
         series: [{
-            name: 'Temperature',
+            name: 'Turbidity',
             data: [0.5],
             dataLabels: {
                 format:
@@ -120,8 +120,8 @@ const chartTurbidity = Highcharts.chart(
 const chartPH = Highcharts.chart(
     'container-ph', Highcharts.merge(gaugeOptions, {
         yAxis: {
-            min: 0,
-            max: 14,
+            min: 5,
+            max: 9,
         },
         
         credits: {
@@ -129,8 +129,8 @@ const chartPH = Highcharts.chart(
         },
         
         series: [{
-            name: 'Temperature',
-            data: [7],
+            name: 'pH',
+            data: [8],
             dataLabels: {
                 format:
                 '<div style="text-align:center">' +
@@ -143,3 +143,40 @@ const chartPH = Highcharts.chart(
     })
 );   
 
+function getValue(){
+    $.ajax({
+        url: "http://localhost:3000/getData",
+        type: "GET",
+        async: true,
+        dataType: "json",
+        success: function(data){
+            const temperature = data.Temp;
+            const turbidity = data.Turbidity;
+            const ph = data.PH;
+            
+            chartTemp.series[0].setData([temperature]);
+            chartTurbidity.series[0].setData([turbidity]);
+            chartPH.series[0].setData([ph]);
+
+            updateStatusBox('status-temperature', temperature, 0, 35); // assuming normal range is 0-35
+            updateStatusBox('status-turbidity', turbidity, 0, 1); // assuming normal range is 0-1
+            updateStatusBox('status-ph', ph, 6.5, 8.5); // assuming normal range is 6.5-8.5
+        },
+        error: function(){
+          alert("Error fetching data");
+        }
+    });
+}
+
+function updateStatusBox(elementId, value, min, max) {
+    const statusBox = document.getElementById(elementId);
+    if (value >= min && value <= max) {
+        statusBox.textContent = 'Normal';
+        statusBox.className = 'status-box normal';
+    } else {
+        statusBox.textContent = 'Abnormal';
+        statusBox.className = 'status-box abnormal';
+    }
+}
+
+setInterval(getValue, 1000);
